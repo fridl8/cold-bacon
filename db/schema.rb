@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819011310) do
+ActiveRecord::Schema.define(version: 20170821163916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170819011310) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "popularity"
   end
 
   create_table "games", force: :cascade do |t|
@@ -28,14 +29,16 @@ ActiveRecord::Schema.define(version: 20170819011310) do
     t.datetime "updated_at", null: false
     t.integer "starting_actor_id"
     t.integer "ending_actor_id"
+    t.boolean "is_finished", default: false
   end
 
   create_table "movies", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.integer "tmdb_id"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "popularity"
   end
 
   create_table "paths", force: :cascade do |t|
@@ -51,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170819011310) do
     t.integer "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_known_for"
   end
 
 end
